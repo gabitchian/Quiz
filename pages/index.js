@@ -1,18 +1,18 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
 
 import db from '../db.json';
-import futureThemes from "../future_themes.json";
-import { Widget } from '../src/components/Widget';
+import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
-
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
 
 /* const Title = styled.h1`
   font-size: 50px;
@@ -40,7 +40,6 @@ export const QuizContainer = styled.div`
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState('');
-  const [theme, setTheme] = useState(futureThemes[1]);
 
   return (
     <>
@@ -49,31 +48,31 @@ export default function Home() {
         <meta property="og:description" content="Projeto criado durante o curso de Imersão React Next.js" />
         <meta property="og:type" content="quiz" />
         <meta property="og:url" content="https://aluraquiz-git-main.gabitchian.vercel.app/" />
-        <meta property="og:image" content={theme.bg} />
+        <meta property="og:image" content={db.bg} />
       </Head>
-      <QuizBackground backgroundImage={theme.bg}>
+      <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
           <QuizLogo />
           <Widget>
             <Widget.Header>
-              <h1>{theme.title}</h1>
+              <h1>{db.title}</h1>
             </Widget.Header>
             <Widget.Content>
-              <p>{theme.description}</p>
+              <p>{db.description}</p>
               <form onSubmit={(event) => {
                 event.preventDefault();
                 router.push(`/quiz?name=${name}`);
               }}
               >
-                <input
-                  placeholder="Diz aí seu nome"
-                  onChange={(input) => {
-                    setName(input.target.value);
-                  }}
+                <Input
+                  name="name"
+                  onChange={(input) => setName(input.target.value)}
+                  placeholder="Diz ai seu nome"
+                  value={name}
                 />
-                <button type="submit" disabled={name.length === 0}>
-                  Jogar {name}
-                </button>
+                <Button type="submit" disabled={name.length === 0}>
+                  {`Jogar ${name}`}
+                </Button>
               </form>
             </Widget.Content>
           </Widget>

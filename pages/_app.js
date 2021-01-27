@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Head from 'next/head';
 import db from '../db.json';
-import Header from '../src/components/Header';
-import futureThemes from "../future_themes.json";
-// const [theme, setTheme] = useState(futureThemes[1]);
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -30,14 +27,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const { tema } = db;
-// const [theme, setTheme] = useState(futureThemes[1]);
-
+// const { theme } = db;
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
-  const [theme, setTheme] = useState(futureThemes[0]);
-
+  const {theme} = db;
   return (
     <>
       <Head>
@@ -47,7 +41,6 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Header />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
