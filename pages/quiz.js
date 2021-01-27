@@ -93,12 +93,12 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage() {
+export default function QuizPage({ quiz }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
-  const totalQuestions = db.questions.length;
+  const totalQuestions = quiz.questions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = db.questions[questionIndex];
+  const question = quiz.questions[questionIndex];
 
   // [React chama de: Efeitos || Effects]
   // React.useEffect
