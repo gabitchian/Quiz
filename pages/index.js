@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta property="og:title" content="AluraQuiz" />
+        <meta property="og:title" content="Quiz de Scala" />
         <meta property="og:description" content="Projeto criado durante o curso de Imersão React Next.js" />
         <meta property="og:type" content="quiz" />
         <meta property="og:url" content="https://aluraquiz-git-main.gabitchian.vercel.app/" />
@@ -149,7 +149,7 @@ export default function Home() {
             animate="show"
           />
         </QuizContainer>
-        <GitHubCorner projectUrl="https://github.com/gabitchian" />
+        <GitHubCorner projectUrl="https://github.com/gabitchian/aluraquiz" />
       </QuizBackground>
     </>
   );
