@@ -22,7 +22,7 @@ const ResultWidget = ({ results, name }) => {
       </Widget.Header>
 
       <Widget.Content>
-        <h1>{`Parabéns por tem concluído o quiz ${name}!!!`}</h1>
+        <h1>{`Parabéns por ter concluído o quiz ${name}!!!`}</h1>
         <p>
           {'Você acertou '}
           {/* {results.reduce((currentSum, currentResult) => (
