@@ -164,7 +164,7 @@ export default function QuizPage({ db, name }) {
   useEffect(() => {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 5 * 1000);
   }, []);
 
   const handleSubmitQuiz = () => {
@@ -218,6 +218,7 @@ ResultWidget.propTypes = {
 QuizPage.propTypes = {
   db: PropTypes.shape({
     questions: PropTypes.array.isRequired,
+    bg: PropTypes.string.isRequired,
   }).isRequired,
   name: PropTypes.string.isRequired,
 };
