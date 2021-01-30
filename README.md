@@ -5,7 +5,7 @@
 [![Deploy with Vercel](https://vercel.com/button)](https://aluraquiz.gabitchian.vercel.app/)
 
 ## History/Histórico
-Da uma olhada na aba [Releases](https://github.com/omariosouto/flappy-bird-devsoutinho/releases) pra acompanhar as alterações feitas no projeto.
+Da uma olhada na aba [Releases](https://github.com/gabitchian/aluraquiz/releases) pra acompanhar as alterações feitas no projeto.
 
 ## License/Licença do Projeto
 [MIT License](./LICENSE.md) © [Gabriela Tchian](https://github.com/gabitchian)
