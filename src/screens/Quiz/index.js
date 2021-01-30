@@ -4,16 +4,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizContainer from '../src/components/QuizContainer';
-import Button from '../src/components/Button';
-import AlternativesForm from '../src/components/AlternativeForm';
-import Spinner from '../src/components/Spinner';
+import Widget from '../../components/Widget';
+import QuizLogo from '../../components/QuizLogo';
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import Button from '../../components/Button';
+import AlternativesForm from '../../components/AlternativeForm';
+import Spinner from '../../components/Spinner';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
-const ResultWidget = ({ results }) => {
+const ResultWidget = ({ results, name }) => {
   const correctAnswers = results.filter((correct) => correct).length;
   return (
     <Widget>
@@ -22,6 +22,7 @@ const ResultWidget = ({ results }) => {
       </Widget.Header>
 
       <Widget.Content>
+        <h1>{`Parabéns por tem concluído o quiz ${name}!!!`}</h1>
         <p>
           {'Você acertou '}
           {/* {results.reduce((currentSum, currentResult) => (
@@ -51,7 +52,7 @@ const LoadingWidget = () => (
       Carregando...
     </Widget.Header>
 
-    <Widget.Content style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Widget.Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Spinner />
     </Widget.Content>
   </Widget>
@@ -73,6 +74,7 @@ const QuestionWidget = ({
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -82,7 +84,7 @@ const QuestionWidget = ({
         alt="Descrição"
         style={{
           width: '100%',
-          height: '150px',
+          height: '100%',
           objectFit: 'cover',
         }}
         src={question.image}
@@ -131,11 +133,15 @@ const QuestionWidget = ({
             );
           })}
 
-          <Button type="submit" disabled={!hasAlternativeSelected}>
+          <Button
+            type="submit"
+            disabled={!hasAlternativeSelected}
+            as={motion.button}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.8 }}
+          >
             Confirmar
           </Button>
-          {isCorrect && isQuestionSubmited && <p>Você acertou</p>}
-          {!isCorrect && isQuestionSubmited && <p>Você errou</p>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
@@ -147,7 +153,7 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage() {
+export default function QuizPage({ db, name }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [results, setResults] = useState([]);
   const totalQuestions = db.questions.length;
@@ -190,7 +196,7 @@ export default function QuizPage() {
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+        {screenState === screenStates.RESULT && <ResultWidget results={results} name={name} />}
       </QuizContainer>
     </QuizBackground>
   );
@@ -206,4 +212,12 @@ QuestionWidget.propTypes = {
 
 ResultWidget.propTypes = {
   results: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+QuizPage.propTypes = {
+  db: PropTypes.shape({
+    questions: PropTypes.array.isRequired,
+  }).isRequired,
+  name: PropTypes.string.isRequired,
 };

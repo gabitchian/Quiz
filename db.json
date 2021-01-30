@@ -5,7 +5,7 @@
     "description": "Teste os seus conhecimentos sobre scala",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+        "image": "https://thumbs.gfycat.com/TenderMadIrishdraughthorse-small.gif",
         "title": "Qual a melhor maneira de declarar uma variável em Scala?",
         "description": "Essa é pra aquecer",
         "answer": 2,
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://blog.jetbrains.com/wp-content/uploads/2015/04/scala-scala_collections_inspections.gif",
         "title": "Qual dessas collections é mutável?",
         "description": "",
         "answer": 2,
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://pbs.twimg.com/profile_images/1046311823572692992/bwBhyERO_400x400.jpg",
         "title": "Scala precisa de ponto e vírgula?",
         "description": "",
         "answer": 0,
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media1.tenor.com/images/b6fc8c485c56718c7ac348ea0e3c0be9/tenor.gif?itemid=14961146",
         "title": "Em scala, é necessário usar return na última linha?",
         "description": "",
         "answer": 0,
@@ -48,7 +48,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media2.giphy.com/media/TjG13sqkXzwGfvAm93/200.gif",
         "title": "Para que serve o símbolo '???' ?",
         "description": "Essa é mais complicadinha ein haha",
         "answer": 2,
@@ -59,7 +59,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "data:image/jpeg;base64,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",
         "title": "Qual a forma correta de fazer interpolação de strings?",
         "description": "Essa fácil ein haha",
         "answer": 3,
@@ -71,7 +71,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://s3-eu-west-1.amazonaws.com/rpf-futurelearn/programming-102/1.6-basicfunctionmachine.gif",
         "title": "Qual a forma correta de criar uma function em scala?",
         "description": "Essa fácil ein haha",
         "answer": 3,
@@ -84,7 +84,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.tenor.com/images/1bd7b19c049ec2dbe23af35916c58aa7/tenor.gif",
         "title": "Em scala, é possível utilizar símbolos como nome para métodos?",
         "description": "Exemplo: \"def -- (int: Int) = 10 - int\"",
         "answer": 1,
@@ -94,7 +94,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media4.giphy.com/media/xUPGcMib7c4lLYxWNy/giphy.gif",
         "title": "É possível invocar métodos sem usar parênteses?",
         "description": "Exemplo: \"add 3\"",
         "answer": 1,
@@ -104,7 +104,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://i.gifer.com/L7sU.gif",
         "title": "Para que serve o for comprehensions?",
         "description": "",
         "answer": 1,
@@ -117,7 +117,10 @@
       }
     ],
     "external": [
-      ""
+      "https://quizwebdev.cassiojcardoso.vercel.app/",
+      "https://imersao-react-next-alura.brunnosena.vercel.app/",
+      "https://python-quiz.ermessonlima.vercel.app/",
+      "https://quizwebdev.cassiojcardoso.vercel.app/"
     ],
     "theme": {
       "colors": {
