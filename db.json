@@ -79,7 +79,7 @@
           "function somar(a, b) {return a+b}",
           "const somar(a, b) => {return a+b}",
           "val somar(a, b) = a+b",
-          "val somar(a: Int, b: Int): Int = a+b",
+          "def somar(a: Int, b: Int): Int = a+b",
           "val somar(a: Integer, b: Integer): Integer = a+b"
         ]
       },
