@@ -6,24 +6,113 @@
     "questions": [
       {
         "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
+        "title": "Qual a melhor maneira de declarar uma variável em Scala?",
         "description": "Essa é pra aquecer",
         "answer": 2,
         "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
+          "var",
+          "let",
+          "val",
+          "const"
         ]
       },
       {
         "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
+        "title": "Qual dessas collections é mutável?",
+        "description": "",
+        "answer": 2,
+        "alternatives": [
+           "List",
+           "Vector",
+           "ListBuffer"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Scala precisa de ponto e vírgula?",
+        "description": "",
         "answer": 0,
         "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+          "Não",
+          "Sim"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Em scala, é necessário usar return na última linha?",
+        "description": "",
+        "answer": 0,
+        "alternatives": [
+          "Não",
+          "Sim"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Para que serve o símbolo '???' ?",
+        "description": "Essa é mais complicadinha ein haha",
+        "answer": 2,
+        "alternatives": [
+          "Não existe esse símbolo",
+          "Representar um método não implementado, porém não é possível utilizar sem erro",
+          "Representar um método não implementado, porém é possível utilizar sem erro"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Qual a forma correta de fazer interpolação de strings?",
+        "description": "Essa fácil ein haha",
+        "answer": 3,
+        "alternatives": [
+          "\"string ${var}\"",
+          "\"string \" . var",
+          "\"string \" + var",
+          "s\"string $var\""
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Qual a forma correta de criar uma function em scala?",
+        "description": "Essa fácil ein haha",
+        "answer": 3,
+        "alternatives": [
+          "function somar(a, b) {return a+b}",
+          "const somar(a, b) => {return a+b}",
+          "val somar(a, b) = a+b",
+          "val somar(a: Int, b: Int): Int = a+b",
+          "val somar(a: Integer, b: Integer): Integer = a+b"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Em scala, é possível utilizar símbolos como nome para métodos?",
+        "description": "Exemplo: \"def -- (int: Int) = 10 - int\"",
+        "answer": 1,
+        "alternatives": [
+          "Não",
+          "Sim"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "É possível invocar métodos sem usar parênteses?",
+        "description": "Exemplo: \"add 3\"",
+        "answer": 1,
+        "alternatives": [
+          "Não",
+          "Sim"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Para que serve o for comprehensions?",
+        "description": "",
+        "answer": 1,
+        "alternatives": [
+          "É um for normal",
+          "Serve para simplificar o código",
+          "É uma forma de switch case do scala",
+          "Não existe isso"
         ]
       }
     ],
