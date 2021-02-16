@@ -1,0 +1,39 @@
+{
+  "name": "@quiz/components",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Gabriela Tchian <gftchian@dgmail.com>",
+  "homepage": "https://github.com/gabitchian/Quiz#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dependencies": {
+    "framer-motion": "^3.3.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-lottie": "^1.2.3",
+    "styled-components": "latest"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^5.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "./*/__tests__/*.test.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabitchian/Quiz.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gabitchian/Quiz/issues"
+  }
+}
