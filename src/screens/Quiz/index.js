@@ -5,21 +5,19 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 import Widget from '../../components/Widget';
-import QuizLogo from '../../components/QuizLogo';
+import QuizLogo from '../../components/QuizLogo/Alura';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import Button from '../../components/Button';
 import AlternativesForm from '../../components/AlternativeForm';
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 import BackLinkArrow from '../../components/BackLinkArrow';
 
 const ResultWidget = ({ results, name }) => {
   const correctAnswers = results.filter((correct) => correct).length;
   return (
     <Widget>
-      <Widget.Header>
-        Tela de Resultado
-      </Widget.Header>
+      <Widget.Header>Tela de Resultado</Widget.Header>
 
       <Widget.Content>
         <h1>{`Parabéns por ter concluído o quiz ${name}!!!`}</h1>
@@ -29,15 +27,16 @@ const ResultWidget = ({ results, name }) => {
             currentResult ? (currentSum + 1) : currentSum
           ), 0)} */}
           {correctAnswers}
-          {`${correctAnswers > 1 || correctAnswers === 0 ? ' perguntas' : ' pergunta'}`}
+          {`${
+            correctAnswers > 1 || correctAnswers === 0
+              ? ' perguntas'
+              : ' pergunta'
+          }`}
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${index}`}>
-              Pergunta #
-              {(index + 1)}
-              :
-              {result ? ' Acertou' : ' Errou'}
+              Pergunta #{index + 1}:{result ? ' Acertou' : ' Errou'}
             </li>
           ))}
         </ul>
@@ -48,11 +47,15 @@ const ResultWidget = ({ results, name }) => {
 
 const LoadingWidget = () => (
   <Widget>
-    <Widget.Header>
-      Carregando...
-    </Widget.Header>
+    <Widget.Header>Carregando...</Widget.Header>
 
-    <Widget.Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Widget.Content
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Spinner />
     </Widget.Content>
   </Widget>
@@ -74,14 +77,12 @@ const QuestionWidget = ({
   return (
     <Widget>
       <Widget.Header>
-        <BackLinkArrow href="/" />
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+        <BackLinkArrow href='/' />
+        <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
-        alt="Descrição"
+        alt='Descrição'
         style={{
           width: '100%',
           height: '100%',
@@ -90,12 +91,8 @@ const QuestionWidget = ({
         src={question.image}
       />
       <Widget.Content>
-        <h2>
-          {question.title}
-        </h2>
-        <p>
-          {question.description}
-        </p>
+        <h2>{question.title}</h2>
+        <p>{question.description}</p>
 
         <AlternativesForm
           onSubmit={(event) => {
@@ -115,7 +112,7 @@ const QuestionWidget = ({
             const isSelected = selectedAlternative === alternativeIndex;
             return (
               <Widget.Topic
-                as="label"
+                as='label'
                 htmlFor={alternativeId}
                 key={alternativeId}
                 data-selected={isSelected}
@@ -125,7 +122,7 @@ const QuestionWidget = ({
                   style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
-                  type="radio"
+                  type='radio'
                   onChange={() => setSelectedAlternative(alternativeIndex)}
                 />
                 {alternative}
@@ -134,7 +131,7 @@ const QuestionWidget = ({
           })}
 
           <Button
-            type="submit"
+            type='submit'
             disabled={!hasAlternativeSelected}
             as={motion.button}
             whileHover={{ scale: 1.15 }}
@@ -196,7 +193,9 @@ export default function QuizPage({ db, name }) {
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <ResultWidget results={results} name={name} />}
+        {screenState === screenStates.RESULT && (
+          <ResultWidget results={results} name={name} />
+        )}
       </QuizContainer>
     </QuizBackground>
   );

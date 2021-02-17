@@ -14,12 +14,12 @@ const Button = styled.button`
   line-height: 1;
   text-transform: uppercase;
   outline: 0;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &:disabled {
@@ -31,6 +31,17 @@ const Button = styled.button`
 Button.propTypes = {
   type: PropTypes.oneOf(['submit', 'type', 'button']).isRequired,
   children: PropTypes.node.isRequired,
+  theme: PropTypes.exact({
+    colors: PropTypes.exact({
+      primary: PropTypes.string,
+      secondary: PropTypes.string,
+      mainBg: PropTypes.string,
+      contrastText: PropTypes.string,
+      wrong: PropTypes.string,
+      success: PropTypes.string,
+    }),
+    borderRadius: PropTypes.string,
+  }),
 };
 
 export default Button;

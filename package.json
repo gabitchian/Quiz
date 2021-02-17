@@ -6,7 +6,9 @@
     "build": "next build",
     "start": "next start",
     "eslint:init": "eslint --init",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./ --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "framer-motion": "^3.2.2-rc.1",
@@ -19,6 +21,12 @@
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-essentials": "^6.1.18",
+    "@storybook/addon-links": "^6.1.18",
+    "@storybook/react": "^6.1.18",
+    "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.8.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",

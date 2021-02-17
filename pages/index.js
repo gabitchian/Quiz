@@ -8,13 +8,13 @@ import styled from 'styled-components';
 
 import db from '../db.json';
 import Widget from '../src/components/Widget';
-import Footer from '../src/components/Footer';
+import Footer from '../src/components/Footer/Alura';
 import GitHubCorner from '../src/components/GitHubCorner';
-import QuizLogo from '../src/components/QuizLogo';
+import QuizLogo from '../src/components/QuizLogo/Alura';
 import QuizBackground from '../src/components/QuizBackground';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
-import User from '../src/components/User';
+import User from '../src/components/Footer/User';
 import Link from '../src/components/Link';
 
 /* const Title = styled.h1`
@@ -34,7 +34,7 @@ export const QuizContainer = styled.div`
   max-width: 350px;
   padding-top: 45px;
   margin: auto 10%;
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     margin: auto;
     padding: 15px;
   }
@@ -47,11 +47,17 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta property="og:title" content="Quiz de Scala" />
-        <meta property="og:description" content="Projeto criado durante o curso de Imersão React Next.js" />
-        <meta property="og:type" content="quiz" />
-        <meta property="og:url" content="https://aluraquiz-git-main.gabitchian.vercel.app/" />
-        <meta property="og:image" content={db.bg} />
+        <meta property='og:title' content='Quiz de Scala' />
+        <meta
+          property='og:description'
+          content='Projeto criado durante o curso de Imersão React Next.js'
+        />
+        <meta property='og:type' content='quiz' />
+        <meta
+          property='og:url'
+          content='https://aluraquiz-git-main.gabitchian.vercel.app/'
+        />
+        <meta property='og:image' content={db.bg} />
       </Head>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
@@ -63,33 +69,34 @@ export default function Home() {
               show: { opacity: 1, y: '0' },
               hidden: { opacity: 0, y: '100%' },
             }}
-            initial="hidden"
-            animate="show"
+            initial='hidden'
+            animate='show'
           >
             <Widget.Header>
               <h1>{db.title}</h1>
             </Widget.Header>
             <Widget.Content>
               <p>{db.description}</p>
-              <form onSubmit={(event) => {
-                event.preventDefault();
-                router.push(`/quiz?name=${name}`);
-              }}
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  router.push(`/quiz?name=${name}`);
+                }}
               >
                 <Input
-                  name="name"
+                  name='name'
                   onChange={(input) => setName(input.target.value)}
-                  placeholder="Diz ai seu nome"
+                  placeholder='Diz ai seu nome'
                   value={name}
                 />
                 <Button
-                  type="submit"
+                  type='submit'
                   disabled={name.length === 0}
                   as={motion.button}
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.8 }}
                 >
-                  {`Jogar ${name}`}
+                  {`Bora jogar ${name}?`}
                 </Button>
               </form>
             </Widget.Content>
@@ -101,8 +108,8 @@ export default function Home() {
               show: { opacity: 1 },
               hidden: { opacity: 0 },
             }}
-            initial="hidden"
-            animate="show"
+            initial='hidden'
+            animate='show'
           >
             <Widget.Content>
               <h1>Quizes da Galera</h1>
@@ -135,21 +142,23 @@ export default function Home() {
               show: { opacity: 1 },
               hidden: { opacity: 0 },
             }}
-            initial="hidden"
-            animate="show"
+            initial='hidden'
+            animate='show'
           />
           <User
+            username='gabitchian'
+            name='Gabi Tchian'
             as={motion.footer}
             transition={{ delay: 1.5, duration: 0.5 }}
             variants={{
               show: { opacity: 1 },
               hidden: { opacity: 0 },
             }}
-            initial="hidden"
-            animate="show"
+            initial='hidden'
+            animate='show'
           />
         </QuizContainer>
-        <GitHubCorner projectUrl="https://github.com/gabitchian/aluraquiz" />
+        <GitHubCorner projectUrl='https://github.com/gabitchian/aluraquiz' />
       </QuizBackground>
     </>
   );
