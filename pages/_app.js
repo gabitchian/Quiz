@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Head from 'next/head';
+import fire from '../config/fire-config';
 import db from '../db.json';
 
 const GlobalStyle = createGlobalStyle`
@@ -31,12 +32,49 @@ const GlobalStyle = createGlobalStyle`
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
+  const [quiz, setQuiz] = useState({});
   const { theme } = db;
+
+  useEffect(() => {
+    fire
+      .firestore()
+      .collection('quiz')
+      .onSnapshot((snap) => {
+        const quizes = snap.docs.map((doc) =>
+          /* let perguntas = [];
+          await fire
+            .firestore()
+            .collection(`quiz/${doc.id}/perguntas`)
+            // .collection(`perguntas`)
+            .onSnapshot((snap2) => {
+              const pergs = snap2.docs.map((pergunta) => ({
+                id: pergunta.id,
+                ...pergunta.data(),
+              }));
+              console.log(pergs);
+              perguntas = pergs;
+            });
+*/
+          ({
+            id: doc.id,
+            // questions: perguntas,
+            ...doc.data(),
+          })
+        );
+        setQuiz(quizes[0]);
+      });
+  }, []);
+
+  console.log(quiz);
+
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap'
+          rel='stylesheet'
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
