@@ -4,16 +4,19 @@ export default (req, res) => {
   fire
     .firestore()
     .collection('quiz')
-    .onSnapshot(async (snap) => {
+    .get()
+    .then(async (snap) => {
       const quizes = await snap.docs.map((doc) => ({
         id: doc.id,
         // questions: perguntas,
         ...doc.data(),
       }));
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.setHeader('Cache-Control', 'max-age=180000');
-      res.send(quizes);
+      res.status(200);
+      res.setHeader('Access-Control-Allow-Credentials', true);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET');
+      // res.json(quizes);
+      res.status(200).json(quizes);
     });
 };
 
