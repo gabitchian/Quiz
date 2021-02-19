@@ -1,20 +1,24 @@
 import fire from '../../../config/fire-config';
 
-export default function handler(req, res) {
-  let ps = {};
+export default (req, res) => {
   fire
     .firestore()
     .collection('quiz')
-    .onSnapshot((snap) => {
-      const quizes = snap.docs.map((doc) => ({
+    .onSnapshot(async (snap) => {
+      const quizes = await snap.docs.map((doc) => ({
         id: doc.id,
         // questions: perguntas,
         ...doc.data(),
       }));
-      ps = quizes[0];
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Cache-Control', 'max-age=180000');
+      res.send(quizes);
     });
+};
 
-  console.log(ps);
-
-  res.json(ps);
-}
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+};
