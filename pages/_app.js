@@ -87,13 +87,11 @@ App.getInitialProps = async (appContext) => {
 }; */
 
 App.getInitialProps = async ({ pageProps }) => {
-  const dev =
-    process.env.NODE_ENV !== 'production'
-      ? 'http://localhost:3000'
-      : 'https://aluraquiz.gabitchian.vercel.app/';
-  const res = await fetch(`${dev}/api/quizes`).then(async (response) => {
-    const json = await response.json();
-    return json;
-  });
+  const res = await fetch(`${process.env.VERCEL_URL}/api/quizes`).then(
+    async (response) => {
+      const json = await response.json();
+      return json;
+    }
+  );
   return { ...pageProps, tema: res[0] };
 };
