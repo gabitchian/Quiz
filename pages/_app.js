@@ -86,13 +86,15 @@ App.getInitialProps = async (appContext) => {
   };
 }; */
 
-App.getInitialProps = async ({ pageProps }) => {
+App.getInitialProps = async ({ Component, pageProps }) => {
+  const appProps = Component.getInitialProps
+    ? await App.getInitialProps(pageProps)
+    : {};
   const http = process.env.NODE_ENV === 'development' ? 'http' : 'https';
   const dev = `${http}://${process.env.VERCEL_URL}`;
-  console.log(dev);
   const res = await fetch(`${dev}/api/quizes`).then(async (response) => {
     const json = await response.json();
     return json;
   });
-  return { ...pageProps, tema: res[0] };
+  return { ...appProps, tema: res[0] };
 };

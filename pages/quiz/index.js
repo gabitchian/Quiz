@@ -4,16 +4,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 // import useSWR from 'swr';
 
-// import db from '../../db.json';
+import dbJson from '../../db.json';
 import QuizPage from '../../src/screens/Quiz';
-
-// export default (props) => (<QuizPage db={db} name={props.match.params.name} />);
-
-const fetcher = async (...args) => {
-  const res = await fetch(...args);
-
-  return res.json();
-};
 
 export default ({ db }) => {
   const router = useRouter();
@@ -22,25 +14,24 @@ export default ({ db }) => {
 };
 
 export async function getServerSideProps(context) {
-  try {
-    const dev = `https://${process.env.VERCEL_URL}`;
-    const db = await fetch(`${dev}/api/quizes/perguntas`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error('Falhar ao pegar os dados');
-      })
-      .then((resJson) => resJson);
+  const http = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const dev = `${http}://${process.env.VERCEL_URL}`;
+  const res = await fetch(`${dev}/api/quizes/perguntas`);
+  const db = await res.json();
 
-    console.log('index ', db);
+  console.log('index ', db);
 
+  if (!db) {
     return {
       props: {
-        db,
+        db: dbJson,
       },
     };
-  } catch (err) {
-    throw new Error(err);
   }
+
+  return {
+    props: {
+      db,
+    },
+  };
 }
