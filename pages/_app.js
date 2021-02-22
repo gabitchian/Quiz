@@ -86,12 +86,13 @@ App.getInitialProps = async (appContext) => {
   };
 }; */
 
-/*App.getInitialProps = async ({ pageProps }) => {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/quizes`).then(
+App.getInitialProps = async ({ pageProps }) => {
+  console.log(process.env.VERCEL_URL);
+  /*const res = await fetch(`${process.env.VERCEL_URL}/api/quizes`).then(
     async (response) => {
       const json = await response.json();
       return json;
     }
-  );
-  return { ...pageProps, tema: res[0] };
-};*/
+  );*/
+  return { ...pageProps };
+};
