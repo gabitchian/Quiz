@@ -87,7 +87,9 @@ App.getInitialProps = async (appContext) => {
 }; */
 
 App.getInitialProps = async ({ pageProps }) => {
-  const dev = `https://${process.env.VERCEL_URL}`;
+  const http = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const dev = `${http}://${process.env.VERCEL_URL}`;
+  console.log(dev);
   const res = await fetch(`${dev}/api/quizes`).then(async (response) => {
     const json = await response.json();
     return json;

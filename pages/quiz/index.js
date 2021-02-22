@@ -23,10 +23,7 @@ export default ({ db }) => {
 
 export async function getServerSideProps(context) {
   try {
-    const dev =
-      process.env.NODE_ENV !== 'production'
-        ? 'http://localhost:3000'
-        : 'https://aluraquiz.gabitchian.vercel.app/';
+    const dev = `https://${process.env.VERCEL_URL}`;
     const db = await fetch(`${dev}/api/quizes/perguntas`)
       .then((res) => {
         if (res.ok) {
