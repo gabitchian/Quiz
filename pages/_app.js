@@ -38,8 +38,8 @@ const fetcher = async (...args) => {
 // const { theme } = db;
 
 // eslint-disable-next-line react/prop-types
-export default function App({ Component, pageProps }) {
-  // const [quiz, setQuiz] = useState(tema.theme);
+export default function App({ Component, pageProps, tema }) {
+  const [quiz, setQuiz] = useState(tema.theme);
 
   /* useEffect(() => {
     fire
@@ -66,10 +66,10 @@ export default function App({ Component, pageProps }) {
           rel='stylesheet'
         />
       </Head>
-      <ThemeProvider theme={db.theme}>
+      <ThemeProvider theme={quiz}>
         <GlobalStyle />
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
+        <Component {...pageProps} quizId={tema.id} />
       </ThemeProvider>
     </>
   );
@@ -87,12 +87,10 @@ App.getInitialProps = async (appContext) => {
 }; */
 
 App.getInitialProps = async ({ pageProps }) => {
-  console.log(process.env.VERCEL_URL);
-  /*const res = await fetch(`${process.env.VERCEL_URL}/api/quizes`).then(
-    async (response) => {
-      const json = await response.json();
-      return json;
-    }
-  );*/
-  return { ...pageProps };
+  const dev = `https://${process.env.VERCEL_URL}`;
+  const res = await fetch(`${dev}/api/quizes`).then(async (response) => {
+    const json = await response.json();
+    return json;
+  });
+  return { ...pageProps, tema: res[0] };
 };
