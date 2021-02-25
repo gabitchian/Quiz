@@ -13,21 +13,18 @@ export default ({ db }) => {
   return <QuizPage db={db} name={name} />;
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const http = process.env.NODE_ENV === 'development' ? 'http' : 'https';
   const dev = `${http}://${process.env.VERCEL_URL}`;
-  const res = await fetch(`${dev}/api/quizes/perguntas`);
-  const db = await res.json();
+  const resPerguntas = await fetch(
+    `${dev}/api/quizes/perguntas/?quizId=eqjxssw9Mxhmug3ohr4V`
+  );
+  const perguntas = await resPerguntas.json();
 
-  console.log('index ', db);
+  const resQuiz = await fetch(`${dev}/api/quizes`);
+  const quiz = await resQuiz.json();
 
-  if (!db) {
-    return {
-      props: {
-        db: dbJson,
-      },
-    };
-  }
+  const db = { ...quiz, questions: perguntas };
 
   return {
     props: {

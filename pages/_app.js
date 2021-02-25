@@ -41,22 +41,6 @@ const fetcher = async (...args) => {
 export default function App({ Component, pageProps, tema }) {
   const [quiz, setQuiz] = useState(tema.theme);
 
-  /* useEffect(() => {
-    fire
-      .firestore()
-      .collection('quiz')
-      .onSnapshot((snap) => {
-        const quizes = snap.docs.map((doc) => ({
-          id: doc.id,
-          // questions: perguntas,
-          ...doc.data(),
-        }));
-        setQuiz(quizes[0]);
-      });
-  }, []); */
-
-  // console.log(quiz);
-
   return (
     <>
       <Head>
@@ -75,20 +59,9 @@ export default function App({ Component, pageProps, tema }) {
   );
 }
 
-/*
-App.getInitialProps = async (appContext) => {
-  const { data } = await axios.get('http://localhost:3000/api/quizes');
-
-  console.log(data);
-  return {
-    ...appContext,
-    theme: data,
-  };
-}; */
-
-App.getInitialProps = async ({ Component, pageProps }) => {
+App.getInitialProps = async ({ Component, pageProps, ctx }) => {
   const appProps = Component.getInitialProps
-    ? await App.getInitialProps(pageProps)
+    ? await Component.getInitialProps(ctx)
     : {};
   const http = process.env.NODE_ENV === 'development' ? 'http' : 'https';
   const dev = `${http}://${process.env.VERCEL_URL}`;
@@ -96,5 +69,5 @@ App.getInitialProps = async ({ Component, pageProps }) => {
     const json = await response.json();
     return json;
   });
-  return { ...appProps, tema: res[0] };
+  return { ...appProps, tema: res };
 };

@@ -16,7 +16,7 @@ export default (req, res) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET');
       // res.json(quizes);
-      res.status(200).json(quizes);
+      res.status(200).json(quizes[0]);
     });
 };
 

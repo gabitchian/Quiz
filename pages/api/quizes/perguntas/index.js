@@ -1,42 +1,21 @@
 import fire from '../../../../config/fire-config';
 
 export default (req, res) => {
+  const { quizId } = req.query;
   fire
     .firestore()
-    .collection('quiz')
-    .get(req.query.quizId)
+    .collection(`quiz/${quizId}/perguntas`)
+    .get()
     .then(async (snap) => {
-      const quizes = await snap.docs.map(async (doc) => {
-        const pergs = await fire
-          .firestore()
-          .collection(`quiz/${doc.id}/perguntas`)
-          .get()
-          .then(async (result) => {
-            const perguntas = await result.docs.map((perg) => ({
-              id: perg.id,
-              ...perg.data(),
-            }));
+      const perguntas = await snap.docs.map((perg) => ({
+        id: perg.id,
+        ...perg.data(),
+      }));
 
-            return perguntas;
-          });
-
-        const obj = {
-          id: doc.id,
-          questions: pergs,
-          ...doc.data(),
-        };
-
-        console.log(obj);
-        return obj;
-      });
-
-      console.log('quizes ', quizes[0]);
-
+      res.status(200);
       res.setHeader('Access-Control-Allow-Credentials', true);
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET');
-      // res.json(quizes);
-      res.status(200).json(quizes[0]);
+
+      res.json(perguntas);
     });
 };
 
