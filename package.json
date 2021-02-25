@@ -1,31 +1,46 @@
 {
-  "name": "with-styled-components",
-  "version": "1.0.0",
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "eslint:init": "eslint --init",
-    "lint": "eslint ./ --fix"
+    "start": "next start"
   },
   "dependencies": {
-    "framer-motion": "^3.2.2-rc.1",
-    "next": "latest",
+    "@types/firebase": "^3.2.1",
+    "firebase": "^8.2.9",
+    "framer-motion": "^3.7.0",
+    "next": "10.0.7",
     "prop-types": "^15.7.2",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-is": "^16.8.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-is": "^17.0.1",
     "react-lottie": "^1.2.3",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0",
-    "eslint": "^7.18.0",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
-  },
-  "license": "MIT"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.1.1",
+    "jest": "^26.6.3",
+    "jest-styled-components": "^7.0.3",
+    "jest-watch-typeahead": "^0.6.1",
+    "prettier": "^2.2.1",
+    "react-test-renderer": "^17.0.1",
+    "typescript": "^4.2.2"
+  }
 }

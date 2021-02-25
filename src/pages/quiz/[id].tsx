@@ -2,7 +2,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import QuizPage from '../../src/screens/Quiz';
+import QuizPage from '../../components/screens/Quiz';
 
 export default function QuizDaGalera({ dbExterno, name }) {
   return (

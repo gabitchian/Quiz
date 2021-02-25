@@ -1,21 +1,22 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 import styled from 'styled-components';
 
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import Footer from '../src/components/Footer';
-import GitHubCorner from '../src/components/GitHubCorner';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import Input from '../src/components/Input';
-import Button from '../src/components/Button';
-import User from '../src/components/User';
-import Link from '../src/components/Link';
+import { QuizContext } from '../context/QuizContext';
+
+import Widget from '../components/Widget';
+import Footer from '../components/Footer';
+import GitHubCorner from '../components/GitHubCorner';
+import QuizLogo from '../components/QuizLogo';
+import QuizBackground from '../components/QuizBackground';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import User from '../components/User';
+import Link from '../components/Link';
 
 /* const Title = styled.h1`
   font-size: 50px;
@@ -41,6 +42,7 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const { db } = useContext(QuizContext)
   const router = useRouter();
   const [name, setName] = useState('');
 

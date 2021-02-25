@@ -1,17 +1,19 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import Widget from '../../components/Widget';
-import QuizLogo from '../../components/QuizLogo';
-import QuizBackground from '../../components/QuizBackground';
-import QuizContainer from '../../components/QuizContainer';
-import Button from '../../components/Button';
-import AlternativesForm from '../../components/AlternativeForm';
-import Spinner from '../../components/Spinner';
-import BackLinkArrow from '../../components/BackLinkArrow';
+import Widget from '../../Widget';
+import QuizLogo from '../../QuizLogo';
+import QuizBackground from '../../QuizBackground';
+import QuizContainer from '../../QuizContainer';
+import Button from '../../Button';
+import AlternativesForm from '../../AlternativeForm';
+import Spinner from '../../Spinner';
+import BackLinkArrow from '../../BackLinkArrow';
+import { QuizContext } from '../../../context/QuizContext';
 
 const ResultWidget = ({ results, name }) => {
   const correctAnswers = results.filter((correct) => correct).length;
@@ -153,7 +155,8 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage({ db, name }) {
+export default function QuizPage({ db }) {
+  const { name } = useContext(QuizContext);
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [results, setResults] = useState([]);
   const totalQuestions = db.questions.length;
